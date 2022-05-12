@@ -2,13 +2,6 @@ import users from "../database";
 import * as bycrpt from "bcryptjs"
 
 const createUserService = async (email, name, password) => {
-  const userAlreadyExists = users.find((user) => user.email === email);
-
-  if (userAlreadyExists) {
-    return response
-      .status(400)
-      .json({ error: "This email is already being used" });
-  }
 
   const hashedPassword = await bycrpt.hash(password, 10)
 
